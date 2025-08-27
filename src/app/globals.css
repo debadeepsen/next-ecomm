@@ -6,6 +6,10 @@
   --foreground: #222;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 *:not(pre) {
   font-family: 'Poppins', system-ui, Arial, Helvetica, sans-serif;
 }
@@ -21,5 +25,17 @@ body {
 }
 
 main {
-  @apply flex flex-col gap-[32px] row-start-2 items-center sm:items-start bg-white w-full md:w-3/4 max-w-7xl w-full p-8 mx-auto -mt-2 shadow-md;
+  @apply flex flex-col gap-[32px] row-start-2 items-center sm:items-start bg-white w-full md:w-3/4 max-w-[1600px] w-full p-8 mx-auto -mt-2 shadow-md;
+}
+
+.product-list {
+  @apply grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+}
+
+aside select {
+  @apply w-full rounded-sm pl-2 pr-4 py-1 shadow-sm;
+}
+
+button {
+  @apply bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer transition;
 } 
