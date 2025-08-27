@@ -1,4 +1,5 @@
 import { Product } from '@/schema/zod'
+import { StarRating } from './utility/StarRating'
 
 export const ProductCard = ({ product }: { product: Product }) => (
   <div className='rounded-lg p-4 bg-white h-full shadow-sm border border-white hover:border-neutral-100 hover:shadow-md transition-all'>
@@ -11,6 +12,9 @@ export const ProductCard = ({ product }: { product: Product }) => (
     )}
     <h3 className='mt-4 mb-1 text-lg font-semibold'>{product.title}</h3>
     <p className='text-sm uppercase text-zinc-400 mb-1'>{product.brand}</p>
-    <p className='text-sm'>${product.price.toFixed(2)}</p>
+    <p className='text-sm mb-3'>${product.price.toFixed(2)}</p>
+    <div>
+      <StarRating rating={product.rating} />
+    </div>
   </div>
 )
