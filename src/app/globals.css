@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --background: #eee;
@@ -38,4 +38,4 @@ aside select {
 
 button {
   @apply bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600 cursor-pointer transition;
-} 
+}

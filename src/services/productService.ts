@@ -4,3 +4,8 @@ export const getProducts = async () => {
     const res = await fetch(`${baseUrl}products`)
     return res.json()
 }
+
+export const getProductDetails = async (id: string) => {
+    const res = await fetch(`${baseUrl}products/${id}`)
+    return res.json()
+}

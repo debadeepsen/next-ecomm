@@ -5,8 +5,10 @@ type FilterPanelProps = {
   brands: string[]
   selectedCategory: string
   selectedBrand: string
+  minRating: number
   onCategoryChange: (category: string) => void
   onBrandChange: (brand: string) => void
+  onMinRatingChange: (rating: number) => void
   onReset: () => void
 }
 
@@ -15,8 +17,10 @@ export const FilterPanel = ({
   brands,
   selectedCategory,
   selectedBrand,
+  minRating,
   onCategoryChange,
   onBrandChange,
+  onMinRatingChange,
   onReset
 }: FilterPanelProps) => (
   <aside className='w-full sm:w-64 bg-white border border-neutral-100 rounded-lg p-4 mb-6 sm:mb-0 flex flex-col gap-4'>
@@ -48,9 +52,23 @@ export const FilterPanel = ({
         ))}
       </select>
     </div>
+    <div>
+      <label className='block font-semibold mb-2'>Minimum Star Rating</label>
+      <input
+        type='range'
+        min={1}
+        max={5}
+        step={1}
+        value={minRating}
+        onChange={e => onMinRatingChange(Number(e.target.value))}
+        className='w-full'
+      />
+      <div className='text-sm mt-1'>★ {minRating} & up</div>
+    </div>
     <button
       onClick={onReset}
       type='button'
+      className='mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded border'
     >
       Reset Filters
     </button>

@@ -10,6 +10,7 @@ type ProductListProps = {
 const ProductList = ({ products }: ProductListProps) => {
   const [selectedCategory, setSelectedCategory] = useState('')
   const [selectedBrand, setSelectedBrand] = useState('')
+  const [minRating, setMinRating] = useState(1)
 
   const categories = Array.from(new Set(products.map(p => p.category))).filter(
     c => !!c
@@ -23,12 +24,14 @@ const ProductList = ({ products }: ProductListProps) => {
       ? product.category === selectedCategory
       : true
     const brandMatch = selectedBrand ? product.brand === selectedBrand : true
-    return categoryMatch && brandMatch
+    const ratingMatch = product.rating >= minRating
+    return categoryMatch && brandMatch && ratingMatch
   })
 
   const handleResetFilters = () => {
     setSelectedCategory('')
     setSelectedBrand('')
+    setMinRating(1)
   }
 
   return (
@@ -38,13 +41,15 @@ const ProductList = ({ products }: ProductListProps) => {
         brands={brands}
         selectedCategory={selectedCategory}
         selectedBrand={selectedBrand}
+        minRating={minRating}
         onCategoryChange={setSelectedCategory}
         onBrandChange={setSelectedBrand}
+        onMinRatingChange={setMinRating}
         onReset={handleResetFilters}
       />
       <div className='product-list flex-1'>
         {filteredProducts.map(product => (
-          <a href='#' key={product.id}>
+          <a href={`/product/${product.id}`} key={product.id}>
             <ProductCard product={product} />
           </a>
         ))}
