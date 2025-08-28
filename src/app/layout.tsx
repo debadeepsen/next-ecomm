@@ -4,8 +4,8 @@ import AppBar from '@/components/AppBar'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | EComm',
-    default: 'EComm'
+    template: '%s | SwiftShop',
+    default: 'SwiftShop'
   },
   description: 'A simple e-commerce app built with Next.js and Tailwind CSS'
 }
