@@ -14,19 +14,7 @@ export const ProductCard = ({ product }: { product: Product }) => (
     <h3 className='mt-4 mb-1 text-lg font-semibold'>{product.title}</h3>
     <p className='text-sm uppercase text-zinc-400 mb-1'>{product.brand}</p>
     <p className='mb-3'>
-      <span
-        className={classNames({
-          'text-sm': true,
-          'line-through': product.discountPercentage > 0
-        })}
-      >
-        ${product.price.toFixed(2)}
-      </span>
-      {product.discountPercentage > 0 && (
-        <span className='text-red-500 font-semibold ml-2'>
-          ${(product.price * (1 - product.discountPercentage / 100)).toFixed(2)}
-        </span>
-      )}
+      <span className='text-sm'>${product.price.toFixed(2)}</span>
     </p>
     <div>
       <StarRating rating={product.rating} />
