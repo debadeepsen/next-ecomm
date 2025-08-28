@@ -4,6 +4,7 @@ import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import { searchProducts } from '@/services/productService'
 import { useDebouncedValue } from '@/utils/hooks'
 import { Icon } from '@iconify-icon/react'
+import { Product } from '@/schema/zod'
 
 interface SearchBoxProps {
   placeholder?: string
@@ -18,8 +19,8 @@ const SearchBox = ({ placeholder = 'Search...' }: SearchBoxProps) => {
   useEffect(() => {
     const fetchResults = async () => {
       if (debouncedQuery.trim()) {
-        const products = await searchProducts(debouncedQuery.trim())
-        setResults(products.map((p: any) => p.title))
+        const products: Product[] = await searchProducts(debouncedQuery.trim())
+        setResults(products.map(p => p.title))
         setShowDropdown(true)
       } else {
         setResults([])
