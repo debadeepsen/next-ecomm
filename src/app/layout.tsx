@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import AppBar from '../../components/AppBar'
+import AppBar from '@/components/AppBar'
 
 export const metadata: Metadata = {
   title: {
