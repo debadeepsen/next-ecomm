@@ -1,5 +1,5 @@
+import ProductList from '@/components/ProductList'
 import { getProducts } from '@/services/productService'
-import ProductList from '../../components/ProductList'
 import { Metadata } from 'next'
 
 
