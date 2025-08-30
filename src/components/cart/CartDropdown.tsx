@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { cartSignal } from '@/store/cartStorage'
+import { redirect } from 'next/navigation'
+import Link from 'next/link'
 
 interface CartDropdownProps {
   open: boolean
@@ -17,7 +19,7 @@ export const CartDropdown = ({ open, onClose }: CartDropdownProps) => {
 
   return (
     <div
-      className={`absolute right-0 top-8 min-w-[220px] bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
+      className={`absolute right-8 top-12 min-w-[220px] bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
         open
           ? 'opacity-100 scale-100 pointer-events-auto'
           : 'opacity-0 scale-95 pointer-events-none'
@@ -56,6 +58,11 @@ export const CartDropdown = ({ open, onClose }: CartDropdownProps) => {
             ))}
           </ul>
         )}
+        <Link className='mt-4 inline-block w-full text-center rounded-sm bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition' href='/checkout/cart'
+        onClick={onClose}
+        >
+          Go to cart
+        </Link>
       </div>
     </div>
   )
