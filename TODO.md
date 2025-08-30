@@ -7,3 +7,4 @@
 - [ ] Include images in the search dropdown
 - [ ] Make all dropdowns go away if idle for 5 seconds
 - [ ] Use `react-window` for the search dropdown
+- [x] SKU and status in PDP should be semibold
