@@ -37,7 +37,7 @@ const CartPage = () => {
                   <div className='font-medium'>{item.title}</div>
                   <div className='text-sm text-gray-500 flex items-center justify-between gap-2 mt-2'>
                     <div>
-                      Qty:
+                      Quantity:
                       <input
                         type='number'
                         className='w-12 text-center border border-gray-300 rounded px-2 py-1 ml-2'
