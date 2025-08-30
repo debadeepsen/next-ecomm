@@ -4,7 +4,7 @@ const Star = ({
   fill = 1,
   size = 24,
   filledColor = '#F6C94C',
-  emptyColor = '#E6E6E6',
+  emptyColor = '#eee7',
   stroke = '#B8860B',
   idSuffix = 0
 }) => {
@@ -62,7 +62,7 @@ export const StarRating = ({
   totalStars = 5,
   size = 24,
   filledColor = '#fda035ff',
-  emptyColor = '#f3e7cfff',
+  emptyColor = '#eee7',
   stroke = '#f1ba67ff'
 }) => {
   // clamp
