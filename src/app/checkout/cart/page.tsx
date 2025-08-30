@@ -1,6 +1,7 @@
 'use client'
 
 import { cartSignal } from '@/store/cartStorage'
+import { Icon } from '@iconify-icon/react/'
 import { useSignals } from '@preact/signals-react/runtime'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
@@ -76,7 +77,7 @@ const CartPage = () => {
                           onClick={() => handleDelete(item.id)}
                           aria-label='Remove item'
                         >
-                          &times;
+                          <Icon icon='material-symbols-light:delete-outline'className='text-xl' />
                         </button>
                       </div>
                     </div>
