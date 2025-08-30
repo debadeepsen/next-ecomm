@@ -3,8 +3,10 @@
 import { cartSignal } from '@/store/cartStorage'
 import { useSignals } from '@preact/signals-react/runtime'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 const CartPage = () => {
+  const [mounted, setMounted] = useState(false)
   useSignals()
   const cartItems = cartSignal.value
   const total = cartItems.reduce(
@@ -12,11 +14,21 @@ const CartPage = () => {
     0
   )
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const handleChange = (id: number, value: number) => {
     cartSignal.value = cartSignal.value
       .map(item => (item.id === id ? { ...item, quantity: value } : item))
       .filter(item => item.quantity > 0)
   }
+
+  const handleDelete = (id: number) => {
+    cartSignal.value = cartSignal.value.filter(item => item.id !== id)
+  }
+
+  if (!mounted) return null
 
   return (
     <div className='w-[90%] max-w-3xl mx-auto px-4 py-10'>
@@ -53,8 +65,20 @@ const CartPage = () => {
                         }
                       />
                     </div>
-                    <div className='font-semibold text-gray-900'>
-                      ${item.price * item.quantity}
+                    <div className='flex items-center gap-1'>
+                      <div className='font-semibold text-gray-900'>
+                        ${item.price * item.quantity}
+                      </div>
+                      <div>
+                        <button
+                          className='reset ml-4 w-6 h-6 flex justify-center items-center rounded-full bg-red-500 text-white hover:bg-red-700 cursor-pointer transition'
+                          title={`Remove ${item.title} from cart`}
+                          onClick={() => handleDelete(item.id)}
+                          aria-label='Remove item'
+                        >
+                          &times;
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

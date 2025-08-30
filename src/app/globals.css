@@ -36,6 +36,6 @@ aside select {
   @apply w-full rounded-sm pl-2 pr-4 py-1 shadow-sm;
 }
 
-button:not(.bg-transparent) {
+button:not(.bg-transparent, .reset) {
   @apply bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition;
 }
