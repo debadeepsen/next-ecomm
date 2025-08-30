@@ -1,4 +1,3 @@
-import React from 'react'
 import { notFound } from 'next/navigation'
 import { getProductDetails } from '@/services/productService'
 import { Product } from '@/schema/zod'
@@ -36,7 +35,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           <ProductMainInfo product={product} />
           <ProductPrice product={product} />
           <StockStatus sku={product.sku} stock={product.stock} />
-          <ProductActions stock={product.stock} />
+          <ProductActions product={product} />
           <ProductExtraInfo product={product} />
         </div>
       </div>

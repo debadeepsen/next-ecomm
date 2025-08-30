@@ -11,8 +11,9 @@ type ProductPageProps = {
 }
 
 const ProductPage = async ({ searchParams }: ProductPageProps) => {
-  const data = await (searchParams?.search
-    ? searchProducts(searchParams.search as string)
+  const awaitedParams = await Promise.resolve(searchParams)
+  const data = await (awaitedParams?.search
+    ? searchProducts(awaitedParams.search as string)
     : getProducts())
 
   return (

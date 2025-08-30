@@ -3,6 +3,7 @@ import { Product } from '@/schema/zod'
 import { ProductCard } from './ProductCard'
 import { useState } from 'react'
 import { FilterPanel } from './FilterPanel'
+import Link from 'next/link'
 
 type ProductListProps = {
   products: Product[]
@@ -49,9 +50,9 @@ const ProductList = ({ products }: ProductListProps) => {
       />
       <div className='product-list flex-1'>
         {filteredProducts.map(product => (
-          <a href={`/product/${product.id}`} key={product.id}>
+          <Link href={`/product/${product.id}`} key={product.id}>
             <ProductCard product={product} />
-          </a>
+          </Link>
         ))}
       </div>
     </div>
