@@ -11,7 +11,7 @@ export const ProductPrice = ({ product }: ProductPriceProps) => (
       ${product.price.toFixed(2)}
     </span>
     {product.discountPercentage > 0 && (
-      <span className='text-lg text-red-600'>
+      <span className='text-lg text-red-600 relative -top-0.5'>
         -{product.discountPercentage}%
       </span>
     )}

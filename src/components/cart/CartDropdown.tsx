@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { cartSignal } from '@/store/cartStorage'
-import { redirect } from 'next/navigation'
 import Link from 'next/link'
 
 interface CartDropdownProps {
@@ -10,15 +9,40 @@ interface CartDropdownProps {
 
 export const CartDropdown = ({ open, onClose }: CartDropdownProps) => {
   const [mounted, setMounted] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        onClose?.()
+      }
+    }
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose?.()
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleEscape)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [open, onClose])
+
   if (!mounted) return null
 
   return (
     <div
+      ref={dropdownRef}
       className={`absolute right-8 top-12 min-w-[220px] bg-white border border-gray-200 rounded shadow-lg transition-all duration-200 ${
         open
           ? 'opacity-100 scale-100 pointer-events-auto'
@@ -58,8 +82,10 @@ export const CartDropdown = ({ open, onClose }: CartDropdownProps) => {
             ))}
           </ul>
         )}
-        <Link className='mt-4 inline-block w-full text-center rounded-sm bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition' href='/checkout/cart'
-        onClick={onClose}
+        <Link
+          className='mt-4 inline-block w-full text-center rounded-sm bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition'
+          href='/checkout/cart'
+          onClick={onClose}
         >
           Go to cart
         </Link>
