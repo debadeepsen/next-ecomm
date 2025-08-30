@@ -92,8 +92,9 @@ const CartPage = () => {
           </div>
           <Link
             href='/checkout/payment'
-            className='mt-8 block w-full text-center rounded-sm bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition'
+            className='flex justify-center items-center mt-8 w-full text-center rounded-sm bg-gray-800 text-white px-4 py-2 hover:bg-gray-600 cursor-pointer transition'
           >
+            <Icon icon='ic:round-shopping-cart-checkout' className='inline-block mr-2 text-2xl' />
             Proceed to Checkout
           </Link>
         </div>
