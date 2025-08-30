@@ -22,6 +22,7 @@ export const ProductActions = ({ product }: ProductActionsProps) => {
       }
 
       addToCart(item)
+      localStorage.setItem('SS_lastAdded', JSON.stringify(item))
   }
 
   return (

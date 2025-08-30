@@ -14,7 +14,8 @@ interface ProductPageProps {
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const product: Product = await getProductDetails(params.id)
+  const awaitedParams = await params
+  const product: Product = await getProductDetails(awaitedParams.id)
 
   if (!product) {
     notFound()

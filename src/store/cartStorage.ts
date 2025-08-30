@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs'
 import { signal, computed, effect } from '@preact/signals-react'
 import { CartItem } from '@/utils/types'
 
@@ -9,6 +8,7 @@ const loadFromStorage = <T>(key: string, fallback: T): T => {
   if (typeof window === 'undefined') return fallback
   try {
     const saved = localStorage.getItem(key)
+    console.log({ saved })
     return saved ? JSON.parse(saved) : fallback
   } catch {
     return fallback
@@ -20,7 +20,7 @@ const saveToStorage = (key: string, value: unknown) => {
   localStorage.setItem(key, JSON.stringify(value))
 }
 
-export const cartSignal = signal<CartItem[]>([])
+export const cartSignal = signal<CartItem[]>(loadFromStorage<CartItem[]>(STORAGE_KEY, []))
 
 export const initializeCart = () => {
   // Load cart from localStorage at startup
@@ -31,6 +31,7 @@ export const initializeCart = () => {
 
 // Persist whenever cart changes
 effect(() => {
+  console.log('cartSignal changed, saving to localStorage', cartSignal.value)
   saveToStorage(STORAGE_KEY, cartSignal.value)
 })
 
@@ -57,9 +58,10 @@ export const addToCart = (item: CartItem) => {
 
 export const removeFromCart = (id: number) => {
   cartSignal.value = cartSignal.value.filter(i => i.id !== id)
+  console.log(`Item with id ${id} removed from cart`)
 }
 
 export const clearCart = () => {
   cartSignal.value = []
+  console.log('Cart cleared')
 }
-
