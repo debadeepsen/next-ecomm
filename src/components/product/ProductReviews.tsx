@@ -1,5 +1,5 @@
 import { Product } from '@/schema/zod'
-import { StarRating } from './utility/StarRating'
+import { StarRating } from '../utility/StarRating'
 
 type Review = Product['reviews'][number]
 

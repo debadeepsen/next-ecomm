@@ -1,4 +1,4 @@
-import ProductList from '@/components/ProductList'
+import ProductList from '@/components/product/ProductList'
 import { getProducts, searchProducts } from '@/services/productService'
 import { Metadata } from 'next'
 

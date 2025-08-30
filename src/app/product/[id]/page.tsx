@@ -1,13 +1,13 @@
 import { notFound } from 'next/navigation'
 import { getProductDetails } from '@/services/productService'
 import { Product } from '@/schema/zod'
-import { ProductImage } from '@/components/ProductImage'
-import { ProductMainInfo } from '@/components/ProductMainInfo'
-import { ProductPrice } from '@/components/ProductPrice'
-import { ProductActions } from '@/components/ProductActions'
-import { ProductExtraInfo } from '@/components/ProductExtraInfo'
+import { ProductImage } from '@/components/product/ProductImage'
+import { ProductPrice } from '@/components/product/ProductPrice'
+import { ProductActions } from '@/components/product/ProductActions'
+import { ProductExtraInfo } from '@/components/product/ProductExtraInfo'
 import { StockStatus } from '@/components/StockStatus'
-import { ProductReviews } from '@/components/ProductReviews'
+import { ProductMainInfo } from '@/components/product/ProductMainInfo'
+import { ProductReviews } from '@/components/product/ProductReviews'
 
 interface ProductPageProps {
   params: { id: string }

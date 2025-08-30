@@ -1,5 +1,5 @@
 import React from 'react'
-import { StarRating } from './utility/StarRating'
+import { StarRating } from '../utility/StarRating'
 import { Product } from '@/schema/zod'
 
 type ProductMainInfoProps = {

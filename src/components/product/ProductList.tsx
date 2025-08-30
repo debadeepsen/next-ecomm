@@ -1,9 +1,9 @@
 'use client'
 import { Product } from '@/schema/zod'
-import { ProductCard } from './ProductCard'
 import { useState } from 'react'
-import { FilterPanel } from './FilterPanel'
+import { FilterPanel } from '../FilterPanel'
 import Link from 'next/link'
+import { ProductCard } from './ProductCard'
 
 type ProductListProps = {
   products: Product[]

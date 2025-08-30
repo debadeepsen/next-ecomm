@@ -1,6 +1,5 @@
 import { Product } from '@/schema/zod'
-import { StarRating } from './utility/StarRating'
-import classNames from 'classnames'
+import { StarRating } from '../utility/StarRating'
 
 export const ProductCard = ({ product }: { product: Product }) => (
   <div className='rounded-lg p-4 bg-white h-full shadow-sm border border-white hover:border-neutral-100 hover:shadow-md transition-all'>

@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import SearchBox from './SearchBox'
 import Link from 'next/link'
-import { CartIcon } from './CartIcon'
+import { CartIcon } from './cart/CartIcon'
 
 interface AppBarProps {
   title?: string
